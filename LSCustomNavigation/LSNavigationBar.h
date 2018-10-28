@@ -41,7 +41,7 @@ typedef NS_ENUM(NSUInteger, GYNavigationTransitionType) {
 - (void)updateContentAnimationProgress:(CGFloat)progress;
 // 侧滑返回被取消
 - (void)cancelContentAnimation;
-- (void)contentAnimationDidComplete;
+//- (void)contentAnimationDidComplete;
 
 @end
 

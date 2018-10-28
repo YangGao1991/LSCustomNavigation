@@ -26,6 +26,7 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
 A highly customized navigation solution for iOS.
+You can customize the appearance and elements in the bar.
                    DESC
 
   s.homepage     = "https://github.com/YangGao1991/LSCustomNavigation"
