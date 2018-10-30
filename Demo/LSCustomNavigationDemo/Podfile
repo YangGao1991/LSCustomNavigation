@@ -1,0 +1,5 @@
+platform:ios, '8.0'
+
+target 'LSCustomNavigationDemo' do
+	pod 'LSCustomNavigation', '~> 0.0.3'
+end 

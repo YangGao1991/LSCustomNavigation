@@ -1,0 +1,16 @@
+PODS:
+  - LSCustomNavigation (0.0.3)
+
+DEPENDENCIES:
+  - LSCustomNavigation (~> 0.0.3)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - LSCustomNavigation
+
+SPEC CHECKSUMS:
+  LSCustomNavigation: 93437d4b19a0f99938da67dd7a25fde27de737f0
+
+PODFILE CHECKSUM: a0b2f6a1aa8553a4c45cb97d6bd30d43856e4e8d
+
+COCOAPODS: 1.5.3

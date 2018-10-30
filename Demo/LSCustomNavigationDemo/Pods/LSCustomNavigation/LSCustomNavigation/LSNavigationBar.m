@@ -14,15 +14,11 @@
 static NSString *backButtonAnimationKey = @"backButtonAnimationKey";
 static NSString *appearanceAnimationKey = @"appearanceAnimationKey";
 static NSString *titleViewAnimationKey = @"titleViewAnimationKey";
-static NSString *backgroundImageAnimationKey = @"backgroundImageAnimationKey";
-
 
 static NSString *backButtonElementKey = @"backElement";
 static NSString *titleLabelElementKey = @"titleLabelElement";
 static NSString *titleCustomElementKey = @"titleCustomElementKey";
 static NSString *rightCustomElementKey = @"rightCustomElementKey";
-static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
-
 
 #define IS_IPAD ([[UIDevice currentDevice].model isEqualToString:@"iPad"])
 #define GYNavigationTitleAnimationLength (IS_IPAD ? 500 : 200)
@@ -34,19 +30,12 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
 @property (nonatomic, strong) UIButton *backButton2;
 @property (nonatomic, strong) UILabel *titleLabel1;
 @property (nonatomic, strong) UILabel *titleLabel2;
-@property (nonatomic, strong) UIImageView *backgroundImageView1;
-@property (nonatomic, strong) UIImageView *backgroundImageView2;
-
 @property (nonatomic, strong) LSNavigationAnimationGroup *sideGroup1;
 @property (nonatomic, strong) LSNavigationAnimationGroup *sideGroup2;
 @property (nonatomic, strong) LSNavigationAnimationGroup *titleGroup1;
 @property (nonatomic, strong) LSNavigationAnimationGroup *titleGroup2;
-@property (nonatomic, strong) LSNavigationAnimationGroup *backgroundImageGroup1;
-@property (nonatomic, strong) LSNavigationAnimationGroup *backgroundImageGroup2;
-
 
 @property (nonatomic, strong) UIColor *lastBackgroundColor;
-@property (nonatomic, assign) CGFloat lastBackgroundColorAlphaComponent;
 @property (nonatomic, assign) CGFloat lastAlpha;
 @property (nonatomic, assign) CGFloat lastBarHeight;
 
@@ -60,8 +49,6 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
         self.innerItems = [NSMutableArray array];
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
-        [self addSubview:self.backgroundImageView1];
-        [self addSubview:self.backgroundImageView2];
         [self addSubview:self.backButton1];
         [self addSubview:self.backButton2];
         [self addSubview:self.titleLabel1];
@@ -73,22 +60,12 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
         self.titleGroup1 = [[LSNavigationAnimationGroup alloc] initWithElements:@{titleLabelElementKey : self.titleLabel1}];
         self.titleGroup2 = [[LSNavigationAnimationGroup alloc] initWithElements:@{titleLabelElementKey : self.titleLabel2}];
         
-        self.backgroundImageGroup1 = [[LSNavigationAnimationGroup alloc] initWithElements:@{backgroundImageElementKey : self.backgroundImageView1}];
-        self.backgroundImageGroup2 = [[LSNavigationAnimationGroup alloc] initWithElements:@{backgroundImageElementKey : self.backgroundImageView2}];
-
-        
         [self addConstraints];
     }
     return self;
 }
 
 - (void)addConstraints {
-    self.backgroundImageView1.ls_verticalConstraint.active = YES;
-    self.backgroundImageView1.ls_horizonConstraint.active = YES;
-    
-    self.backgroundImageView2.ls_verticalConstraint.active = YES;
-    self.backgroundImageView2.ls_horizonConstraint.active = YES;
-    
     self.backButton1.ls_verticalConstraint.active = YES;
     self.backButton2.ls_verticalConstraint.active = YES;
     self.backButton1.ls_horizonConstraint.active = YES;
@@ -111,7 +88,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
         return;
     }
     [self.innerItems addObject:item];
-    [self updateContentWithTransitionType:LSNavigationTransitionType_Push animated:animated];
+    [self updateContentWithTransitionType:GYNavigationTransitionType_Push animated:animated];
 }
 
 - (LSNavigationItem *)popNavigationItemAnimated:(BOOL)animated {
@@ -120,13 +97,13 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     }
     LSNavigationItem *item = [_innerItems lastObject];
     [_innerItems removeLastObject];
-    [self updateContentWithTransitionType:LSNavigationTransitionType_Pop animated:animated];
+    [self updateContentWithTransitionType:GYNavigationTransitionType_Pop animated:animated];
     return item;
 }
 
 #pragma mark - UI Content
 
-- (void)updateContentWithTransitionType:(LSNavigationTransitionType)transitionType animated:(BOOL)animated {
+- (void)updateContentWithTransitionType:(GYNavigationTransitionType)transitionType animated:(BOOL)animated {
     // 初始状态更新
     [self updateContentBeforeAnimationWithTransitionType:transitionType];
     
@@ -134,34 +111,30 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     [self updateAppearanceAnimated:animated];
     [self updateSideGroupAnimated:animated];
     [self updateTitleViewWithTransitionType:transitionType animated:animated];
-    [self updateBackgroundImageGroupAnimated:animated];
 }
 
-- (void)updateContentBeforeAnimationWithTransitionType:(LSNavigationTransitionType)transitionType {
+- (void)updateContentBeforeAnimationWithTransitionType:(GYNavigationTransitionType)transitionType {
     [self updateTitleGroupBeforeAnimationWithTransitionType:transitionType];
     [self updateSideGroupBeforeAnimationWithTransitionType:transitionType];
     [self updateAppearanceStateBeforeAnimation];
-    [self updateBackgroundImageBeforeAnimationWithTransitionType:transitionType];
     
 }
 
 - (void)updateContentAnimationProgress:(CGFloat)progress {
     [self updateSideGroupAnimationProgress:progress];
-    [self updateTitleGroupAnimationProgress:progress transitionType:LSNavigationTransitionType_InteractivePop];
-    [self updateAppearanceAnimationProgress:progress transitionType:LSNavigationTransitionType_InteractivePop];
-    [self updateBackgroundImageGroupAnimationProgress:progress];
+    [self updateTitleGroupAnimationProgress:progress transitionType:GYNavigationTransitionType_InteractivePop];
+    [self updateAppearanceAnimationProgress:progress transitionType:GYNavigationTransitionType_InteractivePop];
 }
 
 - (void)cancelContentAnimation {
-    [self cancelSideGroupAnimation];
+    [self cancelLeftGroupAnimation];
     [self cancelTitleGroupAnimation];
     [self cancelAppearanceAnimation];
-    [self cancelBackgroundImageGroupAnimation];
 }
 
-#pragma mark - Side Elements
+#pragma mark - Left UI
 
-- (void)updateSideGroupBeforeAnimationWithTransitionType:(LSNavigationTransitionType)transitionType {
+- (void)updateSideGroupBeforeAnimationWithTransitionType:(GYNavigationTransitionType)transitionType {
     LSNavigationAnimationGroup *currentGroup, *anotherGroup;
     if (self.sideGroup1.active) {
         currentGroup = self.sideGroup1;
@@ -172,15 +145,15 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     }
     LSNavigationItem *anotherItem = nil;
     switch (transitionType) {
-        case LSNavigationTransitionType_InteractivePop:
+        case GYNavigationTransitionType_InteractivePop:
         {
             if (self.innerItems.count >= 2) {
                 anotherItem = [self.innerItems objectAtIndex:self.innerItems.count - 2];
             }
         }
             break;
-        case LSNavigationTransitionType_Push:
-        case LSNavigationTransitionType_Pop:
+        case GYNavigationTransitionType_Push:
+        case GYNavigationTransitionType_Pop:
         {
             anotherItem = self.topItem;
         }
@@ -250,7 +223,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     }
 }
 
-- (void)cancelSideGroupAnimation {
+- (void)cancelLeftGroupAnimation {
     [UIView beginAnimations:backButtonAnimationKey context:nil];
     // FIXME: time duration
     [UIView setAnimationDuration:self.animationDuration];
@@ -277,8 +250,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
 - (void)updateAppearanceStateBeforeAnimation {
     self.lastBackgroundColor = self.backgroundColor;
     self.lastBarHeight = self.frame.size.height;
-    self.lastBackgroundColorAlphaComponent = [self.lastBackgroundColor ls_getAlphaValue];
-    self.lastAlpha = self.alpha;
+    self.lastAlpha = [self.lastBackgroundColor ls_getAlphaValue];
 }
 
 - (void)updateAppearanceAnimated:(BOOL)animated {
@@ -287,7 +259,8 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDidStopSelector:@selector(updateAppearanceStateAfterAnimation)];
     }
-    [self updateAppearanceAnimationProgress:1 transitionType:LSNavigationTransitionType_Pop];
+    [self updateAppearanceAnimationProgress:1 transitionType:GYNavigationTransitionType_Pop];
+//    self.alpha = self.topItem.isTranslucent ? 0.7 : 1.0;
     if (animated) {
         [UIView commitAnimations];
     }else {
@@ -295,18 +268,18 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     }
 }
 
-- (void)updateAppearanceAnimationProgress:(CGFloat)progress transitionType:(LSNavigationTransitionType)transitiontype {
+- (void)updateAppearanceAnimationProgress:(CGFloat)progress transitionType:(GYNavigationTransitionType)transitiontype {
     LSNavigationItem *toItem = nil;
     switch (transitiontype) {
-        case LSNavigationTransitionType_InteractivePop:
+        case GYNavigationTransitionType_InteractivePop:
         {
             if (self.innerItems.count >= 2) {
                 toItem = [self.innerItems objectAtIndex:self.innerItems.count - 2];
             }
         }
             break;
-        case LSNavigationTransitionType_Push:
-        case LSNavigationTransitionType_Pop:
+        case GYNavigationTransitionType_Push:
+        case GYNavigationTransitionType_Pop:
         {
             toItem = self.topItem;
         }
@@ -317,11 +290,9 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
                                                           toColor:toItem.barBackgroundColor
                                                          progress:progress];
         CGFloat toAlpha = toItem.barTransparent ? 0 : (toItem.barTranslucent ? 0.7 : 1);
-        CGFloat currentAlpha = (toAlpha - _lastBackgroundColorAlphaComponent) * progress + _lastBackgroundColorAlphaComponent;
+        CGFloat currentAlpha = (toAlpha - _lastAlpha) * progress + _lastAlpha;
         self.backgroundColor = [currentColor colorWithAlphaComponent:currentAlpha];
     }
-    CGFloat toAlpha = toItem.isBarHidden ? 0 : 1;
-    self.alpha = (toAlpha - _lastAlpha) * progress + _lastAlpha;
     if (toItem.barHeight > 0) {
         CGFloat currentHeight = (toItem.barHeight - _lastBarHeight) * progress + _lastBarHeight;
         CGRect currentFrame = self.frame;
@@ -335,7 +306,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     // FIXME: time duration
     [UIView setAnimationDuration:self.animationDuration];
     // 直接完成动画
-    [self updateAppearanceAnimationProgress:0 transitionType:LSNavigationTransitionType_Push];
+    [self updateAppearanceAnimationProgress:0 transitionType:GYNavigationTransitionType_Push];
     [UIView commitAnimations];
 }
 
@@ -343,97 +314,9 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
 //    self.lastBackgroundColor = self.backgroundColor;
 }
 
-#pragma mark - Background image
-
-- (void)updateBackgroundImageBeforeAnimationWithTransitionType:(LSNavigationTransitionType)transitionType {
-    LSNavigationAnimationGroup *currentGroup, *anotherGroup;
-    if (self.backgroundImageGroup1.active) {
-        currentGroup = self.backgroundImageGroup1;
-        anotherGroup = self.backgroundImageGroup2;
-    }else {
-        currentGroup = self.backgroundImageGroup2;
-        anotherGroup = self.backgroundImageGroup1;
-    }
-    LSNavigationItem *anotherItem = nil;
-    switch (transitionType) {
-        case LSNavigationTransitionType_InteractivePop:
-        {
-            if (self.innerItems.count >= 2) {
-                anotherItem = [self.innerItems objectAtIndex:self.innerItems.count - 2];
-            }
-        }
-            break;
-        case LSNavigationTransitionType_Push:
-        case LSNavigationTransitionType_Pop:
-        {
-            anotherItem = self.topItem;
-        }
-            break;
-    }
-    if (anotherItem && anotherItem.barBackgroundImage) {
-        UIImageView *anotherBackgroundImageView = [anotherGroup elementForKey:backgroundImageElementKey];
-        anotherBackgroundImageView.image = anotherItem.barBackgroundImage;
-    }
-}
-
-- (void)updateBackgroundImageGroupAnimationProgress:(CGFloat)progress {
-    // 交互式动画（右划手势）
-    LSNavigationAnimationGroup *currentGroup, *anotherGroup;
-    if (self.backgroundImageGroup1.active) {
-        currentGroup = self.backgroundImageGroup1;
-        anotherGroup = self.backgroundImageGroup2;
-    }else {
-        currentGroup = self.backgroundImageGroup2;
-        anotherGroup = self.backgroundImageGroup1;
-    }
-    
-    [currentGroup setAlpha:1 - progress];
-    [anotherGroup setAlpha:progress];
-}
-
-- (void)updateBackgroundImageGroupAnimated:(BOOL)animated {
-    // 非交互式动画
-    if (animated) {
-        [UIView beginAnimations:backgroundImageAnimationKey context:nil];
-        [UIView setAnimationDuration:self.animationDuration];
-        [UIView setAnimationDelegate:self];
-        [UIView setAnimationDidStopSelector:@selector(updateBackgroundImageGroupStateAfterAnimation)];
-    }
-    // 直接完成动画
-    [self updateBackgroundImageGroupAnimationProgress:1];
-    
-    if (animated) {
-        [UIView commitAnimations];
-    }else {
-        [self updateBackgroundImageGroupStateAfterAnimation];
-    }
-}
-
-- (void)cancelBackgroundImageGroupAnimation {
-    [UIView beginAnimations:backgroundImageAnimationKey context:nil];
-    // FIXME: time duration
-    [UIView setAnimationDuration:self.animationDuration];
-    // 直接完成动画
-    [self updateBackgroundImageGroupAnimationProgress:0];
-    [UIView commitAnimations];
-}
-
-- (void)updateBackgroundImageGroupStateAfterAnimation {
-    LSNavigationAnimationGroup *currentGroup, *anotherGroup;
-    if (self.backgroundImageGroup1.active) {
-        currentGroup = self.backgroundImageGroup1;
-        anotherGroup = self.backgroundImageGroup2;
-    }else {
-        currentGroup = self.backgroundImageGroup2;
-        anotherGroup = self.backgroundImageGroup1;
-    }
-    currentGroup.active = NO;
-    anotherGroup.active = YES;
-}
-
 #pragma mark - Title View
 
-- (void)updateTitleGroupBeforeAnimationWithTransitionType:(LSNavigationTransitionType)transitionType {
+- (void)updateTitleGroupBeforeAnimationWithTransitionType:(GYNavigationTransitionType)transitionType {
     LSNavigationAnimationGroup *currentGroup, *anotherGroup;
     if (self.titleGroup1.active) {
         currentGroup = self.titleGroup1;
@@ -443,22 +326,22 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
         anotherGroup = self.titleGroup1;
     }
     UILabel *anotherTitleLabel = [anotherGroup elementForKey:titleLabelElementKey];
-    
     LSNavigationItem *anotherItem = nil;
+    
     switch (transitionType) {
-        case LSNavigationTransitionType_InteractivePop:
+        case GYNavigationTransitionType_InteractivePop:
         {
             if (self.innerItems.count >= 2) {
                 anotherItem = [self.innerItems objectAtIndex:self.innerItems.count - 2];
             }
         }
             break;
-        case LSNavigationTransitionType_Push:
+        case GYNavigationTransitionType_Push:
         {
             anotherItem = self.topItem;
         }
             break;
-        case LSNavigationTransitionType_Pop:
+        case GYNavigationTransitionType_Pop:
         {
             anotherItem = self.topItem;
         }
@@ -485,19 +368,19 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     }
     
     switch (transitionType) {
-        case LSNavigationTransitionType_InteractivePop:
+        case GYNavigationTransitionType_InteractivePop:
         {
             anotherTitleLabel.ls_horizonConstraint.constant = 0;
             customTitleView.ls_horizonConstraint.constant = 0;
         }
             break;
-        case LSNavigationTransitionType_Push:
+        case GYNavigationTransitionType_Push:
         {
             anotherTitleLabel.ls_horizonConstraint.constant = GYNavigationTitleAnimationLength;
             customTitleView.ls_horizonConstraint.constant = GYNavigationTitleAnimationLength;
         }
             break;
-        case LSNavigationTransitionType_Pop:
+        case GYNavigationTransitionType_Pop:
         {
             anotherTitleLabel.ls_horizonConstraint.constant = 0;
             customTitleView.ls_horizonConstraint.constant = 0;
@@ -514,7 +397,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     [self layoutIfNeeded];
 }
 
-- (void)updateTitleGroupAnimationProgress:(CGFloat)progress transitionType:(LSNavigationTransitionType)transitionType {
+- (void)updateTitleGroupAnimationProgress:(CGFloat)progress transitionType:(GYNavigationTransitionType)transitionType {
     // 交互式动画（右划手势）
     LSNavigationAnimationGroup *currentGroup, *anotherGroup;
     if (self.titleGroup1.active) {
@@ -530,7 +413,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     UIView *anotherCustomView = [anotherGroup elementForKey:titleCustomElementKey];
     
     switch (transitionType) {
-        case LSNavigationTransitionType_Push:
+        case GYNavigationTransitionType_Push:
         {
             [currentGroup setAlpha:1 - progress];
 //            if (self.topItem.titleView) {
@@ -542,8 +425,8 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
 //            }
         }
             break;
-        case LSNavigationTransitionType_Pop:
-        case LSNavigationTransitionType_InteractivePop:
+        case GYNavigationTransitionType_Pop:
+        case GYNavigationTransitionType_InteractivePop:
         {
             [currentGroup setAlpha:1 - progress];
             currentTitleLabel.ls_horizonConstraint.constant = GYNavigationTitleAnimationLength * progress;
@@ -560,7 +443,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     
 }
 
-- (void)updateTitleViewWithTransitionType:(LSNavigationTransitionType)transitionType animated:(BOOL)animated {
+- (void)updateTitleViewWithTransitionType:(GYNavigationTransitionType)transitionType animated:(BOOL)animated {
     
     if (animated) {
         [UIView beginAnimations:titleViewAnimationKey context:nil];
@@ -588,7 +471,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     [UIView setAnimationDuration:self.animationDuration];
     
     // 直接完成动画
-    [self updateTitleGroupAnimationProgress:0 transitionType:LSNavigationTransitionType_Pop];
+    [self updateTitleGroupAnimationProgress:0 transitionType:GYNavigationTransitionType_Pop];
     
     [self layoutIfNeeded];
     [UIView commitAnimations];
@@ -689,40 +572,6 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     titleLabel.ls_verticalConstraint = [self verticalConstraintForSubview:titleLabel];
     return titleLabel;
-}
-
-- (UIImageView *)backgroundImageView1 {
-    if (!_backgroundImageView1) {
-        _backgroundImageView1 = [self backgroundImageView];
-    }
-    return _backgroundImageView1;
-}
-
-- (UIImageView *)backgroundImageView2 {
-    if (!_backgroundImageView2) {
-        _backgroundImageView2 = [self backgroundImageView];
-    }
-    return _backgroundImageView2;
-}
-
-- (UIImageView *)backgroundImageView {
-    UIImageView *backgroundImageView = [[UIImageView alloc] init];
-    backgroundImageView.translatesAutoresizingMaskIntoConstraints = NO;
-    backgroundImageView.ls_horizonConstraint = [NSLayoutConstraint constraintWithItem:backgroundImageView
-                                                                             attribute:NSLayoutAttributeWidth
-                                                                             relatedBy:NSLayoutRelationEqual
-                                                                                toItem:self
-                                                                             attribute:NSLayoutAttributeWidth
-                                                                            multiplier:1
-                                                                              constant:0];
-    backgroundImageView.ls_verticalConstraint = [NSLayoutConstraint constraintWithItem:backgroundImageView
-                                                                              attribute:NSLayoutAttributeHeight
-                                                                              relatedBy:NSLayoutRelationEqual
-                                                                                 toItem:self
-                                                                              attribute:NSLayoutAttributeHeight
-                                                                             multiplier:1
-                                                                               constant:0];
-    return backgroundImageView;
 }
 
 - (NSLayoutConstraint *)verticalConstraintForSubview:(UIView *)subview {

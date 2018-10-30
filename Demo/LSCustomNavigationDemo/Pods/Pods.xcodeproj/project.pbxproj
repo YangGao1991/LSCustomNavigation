@@ -1,0 +1,570 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		001B81D2923AE60CE5633B39AD04267D /* UIView+LSConstraints.h in Headers */ = {isa = PBXBuildFile; fileRef = D8CF565CC2FBF1A7A7B89695D45E2F5B /* UIView+LSConstraints.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		18C73561CBA617D1F7712EAF624091CA /* LSNavigationAnimationGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = FF921DEEBAEFF54FB4FAB838733A2F79 /* LSNavigationAnimationGroup.m */; };
+		2D669B9650E3B9D76AFD4683EF6A5BCD /* UIColor+LCTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 753FB181E703C4C5AADFEC55E113D45E /* UIColor+LCTransition.m */; };
+		33EDE36B883E6B791EA6D6ADD1E88219 /* Pods-LSCustomNavigationDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 16258B402E157AE649399A743E349F71 /* Pods-LSCustomNavigationDemo-dummy.m */; };
+		45E84C66A97C6A061DC9C69128D77566 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFB40531CB700ADF867FEEE78561E78 /* Foundation.framework */; };
+		52424A2BFB845FFF5CEA8161647F67FB /* LSNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D20A1A5F5EFED477452AA72A097D1E /* LSNavigationItem.m */; };
+		6163FF1E83A4D8EF5625ECA0E2B658F5 /* UIView+LSConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB8F2FFEC82ED01BB64C570865C21CA /* UIView+LSConstraints.m */; };
+		6815F5AF8723AD6791DE5C1660A2CBAA /* LSCustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F50B861E663D4160AA0E7DEE5455B7CC /* LSCustomNavigationController.m */; };
+		8E561741A851950719CACCA0A2C6D57B /* UIColor+LCTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = E6965A09A760FF0DB8BCF2AD41AA9454 /* UIColor+LCTransition.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9A3D0187A79278EECCD66859CB47AD72 /* LSNavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 51F0498F655EDC1F8B7E3E442AA02F0D /* LSNavigationBar.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9CC61D2A33F3974470FA534FFECC2B53 /* LSNavigationDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4864B3882E91464229E14B5495C980A9 /* LSNavigationDelegateProxy.m */; };
+		9D3C2A96D733924C11C8FA3A5DBAD28E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E404AA6957590324067E330E0EC533 /* UIKit.framework */; };
+		B7E2B631FD63C36444FCC1B6FC2B05AE /* LSNavigationAnimationGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B288BB92D33B704FFE6B8150EFE0D7E /* LSNavigationAnimationGroup.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		B93887EF3E51E82D2AFF7E3C379C8F02 /* LSNavigationDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 64C90C0449EB5C5AF36A5EA1DA8A701C /* LSNavigationDelegateProxy.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C6E13A13F30295AA75DC803AC2E4B03D /* LSNavigationItem.h in Headers */ = {isa = PBXBuildFile; fileRef = A63F40FCF9E94E157ED37DD9E1A30936 /* LSNavigationItem.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		D66AC47D636050DAA0402A085B0B2B23 /* LSNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C3908FD71594B3F376C7F60B445AED65 /* LSNavigationBar.m */; };
+		E9127268B92E466F28B23E6AD0CA60F0 /* LSCustomNavigation-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62EED1FFA9E3741B11102E7DF09535 /* LSCustomNavigation-dummy.m */; };
+		F454AB897C44CA936E284EEB53E1400C /* LSCustomNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 99267302CBAC7B61AF8BF6954963216D /* LSCustomNavigationController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		85E155F31A9F2B31ADEFE964604CC541 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A2F2C9F1E54230B0028A1ACEA71D94AE;
+			remoteInfo = LSCustomNavigation;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		16258B402E157AE649399A743E349F71 /* Pods-LSCustomNavigationDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LSCustomNavigationDemo-dummy.m"; sourceTree = "<group>"; };
+		2AF835F210E539D62749CA59CEC08E49 /* Pods-LSCustomNavigationDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LSCustomNavigationDemo.release.xcconfig"; sourceTree = "<group>"; };
+		2EFB40531CB700ADF867FEEE78561E78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3A1AE3791ABAC5EB9F7771EE300F3CB5 /* LSCustomNavigation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LSCustomNavigation-prefix.pch"; sourceTree = "<group>"; };
+		4864B3882E91464229E14B5495C980A9 /* LSNavigationDelegateProxy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LSNavigationDelegateProxy.m; path = LSCustomNavigation/LSNavigationDelegateProxy.m; sourceTree = "<group>"; };
+		4A2AE6FDA092831C6144E6E61E228A89 /* Pods-LSCustomNavigationDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LSCustomNavigationDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		51F0498F655EDC1F8B7E3E442AA02F0D /* LSNavigationBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LSNavigationBar.h; path = LSCustomNavigation/LSNavigationBar.h; sourceTree = "<group>"; };
+		581040BAD1A294A69F708490DC866822 /* Pods-LSCustomNavigationDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LSCustomNavigationDemo-resources.sh"; sourceTree = "<group>"; };
+		64C90C0449EB5C5AF36A5EA1DA8A701C /* LSNavigationDelegateProxy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LSNavigationDelegateProxy.h; path = LSCustomNavigation/LSNavigationDelegateProxy.h; sourceTree = "<group>"; };
+		67D20A1A5F5EFED477452AA72A097D1E /* LSNavigationItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LSNavigationItem.m; path = LSCustomNavigation/LSNavigationItem.m; sourceTree = "<group>"; };
+		74E404AA6957590324067E330E0EC533 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		753FB181E703C4C5AADFEC55E113D45E /* UIColor+LCTransition.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+LCTransition.m"; path = "LSCustomNavigation/UIColor+LCTransition.m"; sourceTree = "<group>"; };
+		855A51C8EA05BE63E80ADF3A5139CAAC /* libLSCustomNavigation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libLSCustomNavigation.a; path = libLSCustomNavigation.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B288BB92D33B704FFE6B8150EFE0D7E /* LSNavigationAnimationGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LSNavigationAnimationGroup.h; path = LSCustomNavigation/LSNavigationAnimationGroup.h; sourceTree = "<group>"; };
+		8CD5B24D51072AAE664A66620912B311 /* Pods-LSCustomNavigationDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LSCustomNavigationDemo-acknowledgements.plist"; sourceTree = "<group>"; };
+		8EB8F2FFEC82ED01BB64C570865C21CA /* UIView+LSConstraints.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+LSConstraints.m"; path = "LSCustomNavigation/UIView+LSConstraints.m"; sourceTree = "<group>"; };
+		9097FAF13ADB6ED65D18474043E7503E /* Pods-LSCustomNavigationDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LSCustomNavigationDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		99267302CBAC7B61AF8BF6954963216D /* LSCustomNavigationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LSCustomNavigationController.h; path = LSCustomNavigation/LSCustomNavigationController.h; sourceTree = "<group>"; };
+		9A62EED1FFA9E3741B11102E7DF09535 /* LSCustomNavigation-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LSCustomNavigation-dummy.m"; sourceTree = "<group>"; };
+		A63F40FCF9E94E157ED37DD9E1A30936 /* LSNavigationItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LSNavigationItem.h; path = LSCustomNavigation/LSNavigationItem.h; sourceTree = "<group>"; };
+		C3908FD71594B3F376C7F60B445AED65 /* LSNavigationBar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LSNavigationBar.m; path = LSCustomNavigation/LSNavigationBar.m; sourceTree = "<group>"; };
+		D8CF565CC2FBF1A7A7B89695D45E2F5B /* UIView+LSConstraints.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+LSConstraints.h"; path = "LSCustomNavigation/UIView+LSConstraints.h"; sourceTree = "<group>"; };
+		D91EB5A2CB46320F8E20FA8B87DE6974 /* Pods-LSCustomNavigationDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LSCustomNavigationDemo-frameworks.sh"; sourceTree = "<group>"; };
+		DF303D7B5A805A0EC92A155499695B94 /* libPods-LSCustomNavigationDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-LSCustomNavigationDemo.a"; path = "libPods-LSCustomNavigationDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6965A09A760FF0DB8BCF2AD41AA9454 /* UIColor+LCTransition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+LCTransition.h"; path = "LSCustomNavigation/UIColor+LCTransition.h"; sourceTree = "<group>"; };
+		ECB2F8861FD7767FCF8E226B8484E19B /* LSCustomNavigation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LSCustomNavigation.xcconfig; sourceTree = "<group>"; };
+		F50B861E663D4160AA0E7DEE5455B7CC /* LSCustomNavigationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LSCustomNavigationController.m; path = LSCustomNavigation/LSCustomNavigationController.m; sourceTree = "<group>"; };
+		FF921DEEBAEFF54FB4FAB838733A2F79 /* LSNavigationAnimationGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LSNavigationAnimationGroup.m; path = LSCustomNavigation/LSNavigationAnimationGroup.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		49A2DBA0193597DA11A4816C6089EC11 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF9B0CDB1B802408AC1FEE41279AADDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45E84C66A97C6A061DC9C69128D77566 /* Foundation.framework in Frameworks */,
+				9D3C2A96D733924C11C8FA3A5DBAD28E /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		06CDD10DE71306278CF89108B3036DFD /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				2EFB40531CB700ADF867FEEE78561E78 /* Foundation.framework */,
+				74E404AA6957590324067E330E0EC533 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		335898F0401772CBBF44FD9FB31A5CA7 /* LSCustomNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				99267302CBAC7B61AF8BF6954963216D /* LSCustomNavigationController.h */,
+				F50B861E663D4160AA0E7DEE5455B7CC /* LSCustomNavigationController.m */,
+				8B288BB92D33B704FFE6B8150EFE0D7E /* LSNavigationAnimationGroup.h */,
+				FF921DEEBAEFF54FB4FAB838733A2F79 /* LSNavigationAnimationGroup.m */,
+				51F0498F655EDC1F8B7E3E442AA02F0D /* LSNavigationBar.h */,
+				C3908FD71594B3F376C7F60B445AED65 /* LSNavigationBar.m */,
+				64C90C0449EB5C5AF36A5EA1DA8A701C /* LSNavigationDelegateProxy.h */,
+				4864B3882E91464229E14B5495C980A9 /* LSNavigationDelegateProxy.m */,
+				A63F40FCF9E94E157ED37DD9E1A30936 /* LSNavigationItem.h */,
+				67D20A1A5F5EFED477452AA72A097D1E /* LSNavigationItem.m */,
+				E6965A09A760FF0DB8BCF2AD41AA9454 /* UIColor+LCTransition.h */,
+				753FB181E703C4C5AADFEC55E113D45E /* UIColor+LCTransition.m */,
+				D8CF565CC2FBF1A7A7B89695D45E2F5B /* UIView+LSConstraints.h */,
+				8EB8F2FFEC82ED01BB64C570865C21CA /* UIView+LSConstraints.m */,
+				8DDC53D973B0E7F115EAE1182CC5812C /* Support Files */,
+			);
+			name = LSCustomNavigation;
+			path = LSCustomNavigation;
+			sourceTree = "<group>";
+		};
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				06CDD10DE71306278CF89108B3036DFD /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		55875EA3B4DA800C2816CF0F2DD29098 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				335898F0401772CBBF44FD9FB31A5CA7 /* LSCustomNavigation */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		68446D8690A1E90EAF11EABFCF25DB45 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F1F3D5D86F2BFA9B6E1B4251D15474F1 /* Pods-LSCustomNavigationDemo */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				55875EA3B4DA800C2816CF0F2DD29098 /* Pods */,
+				E95135BCA41273817446F54992B5DEB3 /* Products */,
+				68446D8690A1E90EAF11EABFCF25DB45 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8DDC53D973B0E7F115EAE1182CC5812C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				ECB2F8861FD7767FCF8E226B8484E19B /* LSCustomNavigation.xcconfig */,
+				9A62EED1FFA9E3741B11102E7DF09535 /* LSCustomNavigation-dummy.m */,
+				3A1AE3791ABAC5EB9F7771EE300F3CB5 /* LSCustomNavigation-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/LSCustomNavigation";
+			sourceTree = "<group>";
+		};
+		E95135BCA41273817446F54992B5DEB3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				855A51C8EA05BE63E80ADF3A5139CAAC /* libLSCustomNavigation.a */,
+				DF303D7B5A805A0EC92A155499695B94 /* libPods-LSCustomNavigationDemo.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F1F3D5D86F2BFA9B6E1B4251D15474F1 /* Pods-LSCustomNavigationDemo */ = {
+			isa = PBXGroup;
+			children = (
+				9097FAF13ADB6ED65D18474043E7503E /* Pods-LSCustomNavigationDemo-acknowledgements.markdown */,
+				8CD5B24D51072AAE664A66620912B311 /* Pods-LSCustomNavigationDemo-acknowledgements.plist */,
+				16258B402E157AE649399A743E349F71 /* Pods-LSCustomNavigationDemo-dummy.m */,
+				D91EB5A2CB46320F8E20FA8B87DE6974 /* Pods-LSCustomNavigationDemo-frameworks.sh */,
+				581040BAD1A294A69F708490DC866822 /* Pods-LSCustomNavigationDemo-resources.sh */,
+				4A2AE6FDA092831C6144E6E61E228A89 /* Pods-LSCustomNavigationDemo.debug.xcconfig */,
+				2AF835F210E539D62749CA59CEC08E49 /* Pods-LSCustomNavigationDemo.release.xcconfig */,
+			);
+			name = "Pods-LSCustomNavigationDemo";
+			path = "Target Support Files/Pods-LSCustomNavigationDemo";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7447431CDFDF35288922DCC6EBD3240D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91516C7501D5F8DD9A2EC063E9E4B904 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F454AB897C44CA936E284EEB53E1400C /* LSCustomNavigationController.h in Headers */,
+				B7E2B631FD63C36444FCC1B6FC2B05AE /* LSNavigationAnimationGroup.h in Headers */,
+				9A3D0187A79278EECCD66859CB47AD72 /* LSNavigationBar.h in Headers */,
+				B93887EF3E51E82D2AFF7E3C379C8F02 /* LSNavigationDelegateProxy.h in Headers */,
+				C6E13A13F30295AA75DC803AC2E4B03D /* LSNavigationItem.h in Headers */,
+				8E561741A851950719CACCA0A2C6D57B /* UIColor+LCTransition.h in Headers */,
+				001B81D2923AE60CE5633B39AD04267D /* UIView+LSConstraints.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A2F2C9F1E54230B0028A1ACEA71D94AE /* LSCustomNavigation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C413353621F1C9CE5DEF1582A706249 /* Build configuration list for PBXNativeTarget "LSCustomNavigation" */;
+			buildPhases = (
+				91516C7501D5F8DD9A2EC063E9E4B904 /* Headers */,
+				9B444B7ABA089058874459CA6F9525F5 /* Sources */,
+				FF9B0CDB1B802408AC1FEE41279AADDD /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LSCustomNavigation;
+			productName = LSCustomNavigation;
+			productReference = 855A51C8EA05BE63E80ADF3A5139CAAC /* libLSCustomNavigation.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		F000F96BD0993DD4344348985F1389D7 /* Pods-LSCustomNavigationDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F704F31637A0EF8DEBDFAFE529DD3E3A /* Build configuration list for PBXNativeTarget "Pods-LSCustomNavigationDemo" */;
+			buildPhases = (
+				7447431CDFDF35288922DCC6EBD3240D /* Headers */,
+				47C08F324E453C5C4543586304CF0816 /* Sources */,
+				49A2DBA0193597DA11A4816C6089EC11 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A439F56C6C876A81FDD02D352D6BEECB /* PBXTargetDependency */,
+			);
+			name = "Pods-LSCustomNavigationDemo";
+			productName = "Pods-LSCustomNavigationDemo";
+			productReference = DF303D7B5A805A0EC92A155499695B94 /* libPods-LSCustomNavigationDemo.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = E95135BCA41273817446F54992B5DEB3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A2F2C9F1E54230B0028A1ACEA71D94AE /* LSCustomNavigation */,
+				F000F96BD0993DD4344348985F1389D7 /* Pods-LSCustomNavigationDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		47C08F324E453C5C4543586304CF0816 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33EDE36B883E6B791EA6D6ADD1E88219 /* Pods-LSCustomNavigationDemo-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B444B7ABA089058874459CA6F9525F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9127268B92E466F28B23E6AD0CA60F0 /* LSCustomNavigation-dummy.m in Sources */,
+				6815F5AF8723AD6791DE5C1660A2CBAA /* LSCustomNavigationController.m in Sources */,
+				18C73561CBA617D1F7712EAF624091CA /* LSNavigationAnimationGroup.m in Sources */,
+				D66AC47D636050DAA0402A085B0B2B23 /* LSNavigationBar.m in Sources */,
+				9CC61D2A33F3974470FA534FFECC2B53 /* LSNavigationDelegateProxy.m in Sources */,
+				52424A2BFB845FFF5CEA8161647F67FB /* LSNavigationItem.m in Sources */,
+				2D669B9650E3B9D76AFD4683EF6A5BCD /* UIColor+LCTransition.m in Sources */,
+				6163FF1E83A4D8EF5625ECA0E2B658F5 /* UIView+LSConstraints.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A439F56C6C876A81FDD02D352D6BEECB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LSCustomNavigation;
+			target = A2F2C9F1E54230B0028A1ACEA71D94AE /* LSCustomNavigation */;
+			targetProxy = 85E155F31A9F2B31ADEFE964604CC541 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1328A088E4ED4CA43149B22043C79089 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECB2F8861FD7767FCF8E226B8484E19B /* LSCustomNavigation.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/LSCustomNavigation/LSCustomNavigation-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = LSCustomNavigation;
+				PRODUCT_NAME = LSCustomNavigation;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		57AB4B3002D72300691E4E571805EBF7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AF835F210E539D62749CA59CEC08E49 /* Pods-LSCustomNavigationDemo.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		85B95B1234E227C814CCC2C7902D0916 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		8B60EBE128EF08B0A30FD53AA89D061A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECB2F8861FD7767FCF8E226B8484E19B /* LSCustomNavigation.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/LSCustomNavigation/LSCustomNavigation-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = LSCustomNavigation;
+				PRODUCT_NAME = LSCustomNavigation;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A73625DEBD810B78234FA1958C191C8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		C893B967520588D8998340F507DF8A3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A2AE6FDA092831C6144E6E61E228A89 /* Pods-LSCustomNavigationDemo.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A73625DEBD810B78234FA1958C191C8C /* Debug */,
+				85B95B1234E227C814CCC2C7902D0916 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9C413353621F1C9CE5DEF1582A706249 /* Build configuration list for PBXNativeTarget "LSCustomNavigation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1328A088E4ED4CA43149B22043C79089 /* Debug */,
+				8B60EBE128EF08B0A30FD53AA89D061A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F704F31637A0EF8DEBDFAFE529DD3E3A /* Build configuration list for PBXNativeTarget "Pods-LSCustomNavigationDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C893B967520588D8998340F507DF8A3D /* Debug */,
+				57AB4B3002D72300691E4E571805EBF7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
