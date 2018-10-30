@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "LSCustomNavigation"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "A highly customized navigation solution for iOS."
 
   # This description is used to generate tags and improve search results.
@@ -81,7 +81,7 @@ You can customize the appearance and elements in the bar.
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/YangGao1991/LSCustomNavigation.git", :tag => "0.0.3" }
+  s.source       = { :git => "https://github.com/YangGao1991/LSCustomNavigation.git", :tag => "0.0.4" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
