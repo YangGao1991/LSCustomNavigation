@@ -44,15 +44,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIView *customRightView;
 
 // bar appearance
-@property (nonatomic, strong) UIColor * barBackgroundColor; // bar.backgroundColor，不影响 bar 中的元素
-@property (nonatomic, assign, getter=isBarTransparent) BOOL barTransparent; // bar.backgroundColor.alpha = 0
-@property (nonatomic, assign, getter=isTranslucent) BOOL barTranslucent; // bar.backgroundColor.alpha = 0.7
+// bar.backgroundColor，不影响 bar 中的元素
+@property (nonatomic, strong) UIColor * barBackgroundColor;
+// bar.backgroundColor.alpha = 0
+@property (nonatomic, assign, getter=isBarTransparent) BOOL barTransparent;
+ // bar.backgroundColor.alpha = 0.7
+@property (nonatomic, assign, getter=isTranslucent) BOOL barTranslucent;
 @property (nonatomic, strong) UIImage * barBackgroundImage;
 @property (nonatomic, assign, getter=isBarHidden) BOOL barHidden;
 
 @property (nonatomic,assign) CGFloat barHeight;
 
-+ (instancetype)defaultNavigationItem;
++ (instancetype)appearance;
+
 + (instancetype)new NS_UNAVAILABLE;
 
 @end

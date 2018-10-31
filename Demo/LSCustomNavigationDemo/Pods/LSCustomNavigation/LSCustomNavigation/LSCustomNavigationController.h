@@ -11,13 +11,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol GY_CustomNavigationProtocol <NSObject>
+@protocol LSCustomNavigationProtocol <NSObject>
 
-@property (nonatomic, strong, readonly) LSNavigationItem *gy_customNavigationItem;
+@property (nonatomic, strong, readonly) LSNavigationItem *ls_customNavigationItem;
 
 @end
 
 @interface LSCustomNavigationController : UINavigationController
+
 
 @end
 

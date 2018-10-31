@@ -9,12 +9,9 @@
 #import "LSNavigationItem.h"
 #import "LSNavigationBar.h"
 
-@interface LSNavigationItem ()
+static LSNavigationItem *defaultNavigationItem = nil;
 
-//@property (nonatomic,strong,readwrite) UIImage  * leftNormalImage;
-//@property (nonatomic,strong,readwrite) UIImage  * leftHighligtedImage;
-//@property (nonatomic,strong,readwrite) NSString * leftTitle;
-//@property (nonatomic,strong,readwrite) UIColor  * leftTitleColor;
+@interface LSNavigationItem ()
 
 @end
 
@@ -38,27 +35,12 @@
     return self;
 }
 
-+ (instancetype)defaultNavigationItem {
-    LSNavigationItem *defaultItem = [[LSNavigationItem alloc] init];
-    return defaultItem;
++ (instancetype)appearance {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        defaultNavigationItem = [[LSNavigationItem alloc] init];
+    });
+    return defaultNavigationItem;
 }
-
-//- (void)setLeftButtonWithNormalImage:(UIImage *)normal highlightedImage:(UIImage *)highlighted title:(NSString *)title titleColor:(UIColor *)titleColor {
-//    self.leftNormalImage = normal;
-//    self.leftHighligtedImage = highlighted;
-//    self.leftTitle = title;
-//    self.leftTitleColor = titleColor;
-//}
-//
-//- (void)setLeftButtonWithNormalImage:(UIImage *)normal highlightedImage:(UIImage *)highlighted {
-//    [self setLeftButtonWithNormalImage:normal highlightedImage:highlighted title:nil titleColor:nil];
-//}
-//- (void)setLeftButtonWithImage:(UIImage *)image {
-//    [self setLeftButtonWithNormalImage:image highlightedImage:nil title:nil titleColor:nil];
-//}
-//- (void)setLeftButtonWithTitle:(NSString *)title titleColor:(UIColor *)titleColor {
-//    [self setLeftButtonWithNormalImage:nil highlightedImage:nil title:title titleColor:titleColor];
-//}
-
 
 @end
