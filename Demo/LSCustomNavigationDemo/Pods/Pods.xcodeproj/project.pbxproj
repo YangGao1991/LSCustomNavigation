@@ -316,29 +316,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1328A088E4ED4CA43149B22043C79089 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECB2F8861FD7767FCF8E226B8484E19B /* LSCustomNavigation.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/LSCustomNavigation/LSCustomNavigation-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = LSCustomNavigation;
-				PRODUCT_NAME = LSCustomNavigation;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 		57AB4B3002D72300691E4E571805EBF7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2AF835F210E539D62749CA59CEC08E49 /* Pods-LSCustomNavigationDemo.release.xcconfig */;
@@ -423,7 +400,7 @@
 			};
 			name = Release;
 		};
-		8B60EBE128EF08B0A30FD53AA89D061A /* Release */ = {
+		A31083A4CE8E5F0DE5E73C6E6EBE7429 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ECB2F8861FD7767FCF8E226B8484E19B /* LSCustomNavigation.xcconfig */;
 			buildSettings = {
@@ -432,7 +409,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/LSCustomNavigation/LSCustomNavigation-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -534,6 +511,29 @@
 			};
 			name = Debug;
 		};
+		D41C165B81947495402D5211B2B49656 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECB2F8861FD7767FCF8E226B8484E19B /* LSCustomNavigation.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/LSCustomNavigation/LSCustomNavigation-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = LSCustomNavigation;
+				PRODUCT_NAME = LSCustomNavigation;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -549,8 +549,8 @@
 		9C413353621F1C9CE5DEF1582A706249 /* Build configuration list for PBXNativeTarget "LSCustomNavigation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1328A088E4ED4CA43149B22043C79089 /* Debug */,
-				8B60EBE128EF08B0A30FD53AA89D061A /* Release */,
+				D41C165B81947495402D5211B2B49656 /* Debug */,
+				A31083A4CE8E5F0DE5E73C6E6EBE7429 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
