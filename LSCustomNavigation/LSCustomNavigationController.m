@@ -8,7 +8,6 @@
 
 #import "LSCustomNavigationController.h"
 #import "LSNavigationBar.h"
-#import "LSNavigationItem.h"
 #import "LSNavigationDelegateProxy.h"
 
 #define LS_SCREEN_SIZE  ([UIScreen mainScreen].bounds.size)
@@ -50,12 +49,16 @@ UIGestureRecognizerDelegate>
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     [super pushViewController:viewController animated:animated];
-    if ([viewController conformsToProtocol:@protocol(GY_CustomNavigationProtocol)]) {
-        UIViewController<GY_CustomNavigationProtocol> *toViewController = (UIViewController<GY_CustomNavigationProtocol> *)viewController;
-        LSNavigationItem *toItem = [toViewController gy_customNavigationItem];
+    if ([viewController conformsToProtocol:@protocol(LSCustomNavigationProtocol)]
+        && [viewController respondsToSelector:@selector(ls_customNavigationItem)]) {
+        UIViewController<LSCustomNavigationProtocol> *toViewController = (UIViewController<LSCustomNavigationProtocol> *)viewController;
+        LSNavigationItem *toItem = [toViewController ls_customNavigationItem];
+        if (!toItem) {
+            toItem = [LSNavigationItem appearance];
+        }
         [self.bar pushNavigationItem:toItem animated:animated];
     }else {
-        LSNavigationItem *toItem = [LSNavigationItem defaultNavigationItem];
+        LSNavigationItem *toItem = [LSNavigationItem appearance];
         if (viewController.title && viewController.title.length > 0) {
             toItem.title = viewController.title;
         }

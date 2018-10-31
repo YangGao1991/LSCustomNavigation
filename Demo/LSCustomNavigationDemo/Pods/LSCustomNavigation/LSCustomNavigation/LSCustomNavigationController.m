@@ -119,7 +119,7 @@ UIGestureRecognizerDelegate>
         [self.bar updateContentAnimationProgress:gestureProgress];
         
         }else if (gesture.state == UIGestureRecognizerStateBegan) {
-            [self.bar updateContentBeforeAnimationWithTransitionType:GYNavigationTransitionType_InteractivePop];
+            [self.bar updateContentBeforeAnimationWithTransitionType:LSNavigationTransitionType_InteractivePop];
         }
     }
 }

@@ -20,10 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-typedef NS_ENUM(NSUInteger, GYNavigationTransitionType) {
-    GYNavigationTransitionType_Push,
-    GYNavigationTransitionType_Pop,
-    GYNavigationTransitionType_InteractivePop,
+typedef NS_ENUM(NSUInteger, LSNavigationTransitionType) {
+    LSNavigationTransitionType_Push,
+    LSNavigationTransitionType_Pop,
+    LSNavigationTransitionType_InteractivePop,
 };
 
 @interface LSNavigationBar : UIView
@@ -37,7 +37,7 @@ typedef NS_ENUM(NSUInteger, GYNavigationTransitionType) {
 - (void)pushNavigationItem:(LSNavigationItem *)item animated:(BOOL)animated;
 - (LSNavigationItem *)popNavigationItemAnimated:(BOOL)animated;
 
-- (void)updateContentBeforeAnimationWithTransitionType:(GYNavigationTransitionType)transitionType;
+- (void)updateContentBeforeAnimationWithTransitionType:(LSNavigationTransitionType)transitionType;
 - (void)updateContentAnimationProgress:(CGFloat)progress;
 // 侧滑返回被取消
 - (void)cancelContentAnimation;
