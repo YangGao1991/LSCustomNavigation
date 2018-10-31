@@ -10,7 +10,7 @@
 #import "ViewControllerB.h"
 #import <LSCustomNavigation/LSCustomNavigationController.h>
 
-@interface ViewController ()<GY_CustomNavigationProtocol>
+@interface ViewController ()<LSCustomNavigationProtocol>
 
 @end
 
@@ -34,7 +34,7 @@
     [self.navigationController pushViewController:viewcontrollerB animated:YES];
 }
 
-- (LSNavigationItem *)gy_customNavigationItem {
+- (LSNavigationItem *)ls_customNavigationItem {
     LSNavigationItem *navigationItem = [[LSNavigationItem alloc] init];
     navigationItem.leftTitle = @"VCA";
     navigationItem.title = @"This is A";
