@@ -3,9 +3,11 @@
 ![](https://img.shields.io/cocoapods/v/LSCustomNavigation.svg?style=flat)
 ![](https://img.shields.io/cocoapods/p/LSCustomNavigation.svg?style=flat)
 
-## A highly custom navigation solution.
+### What is it for
 
-### Basic use
+The native navigation system of Cocoa, say, `UINavigationController`, `UINavigationBar` and `UINavigationItem` is somewhat difficult to be customized, e.g., to set different height in some particular scenes. **LSCustomNavigation** is just here aiming to make things easier. 
+
+### Basic usage
 
 Use `LSCustomNavigationController` as your navigation controller. Feel free to use it just the same way as native `UINavigationController`.
 
@@ -33,3 +35,7 @@ You can also modify properties of `[LSNavigationItem appearance]` to config glob
 ```Objective-C
 [LSNavigationItem appearance].barBackgroundColor = [UIColor lightGrayColor];
 ```
+
+### System requirement
+
+- iOS 8.0 +
