@@ -5,7 +5,7 @@
 
 ### What is it for
 
-The native navigation system of Cocoa, say, `UINavigationController`, `UINavigationBar` and `UINavigationItem` is somewhat difficult to be customized, e.g., to set different height in some particular scenes. **LSCustomNavigation** is just here aiming to make things easier. 
+The native navigation system of Cocoa, say, `UINavigationController`, `UINavigationBar` and `UINavigationItem` is somewhat difficult to be customized, e.g., to set different height in some particular scenes. **LSCustomNavigation** is just here aiming to make things easier, while the Cocoa transition style is still remained. More custom transition styles will be available in the future.
 
 ### Basic usage
 
