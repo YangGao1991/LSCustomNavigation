@@ -20,8 +20,6 @@ static LSNavigationItem *defaultNavigationItem = nil;
 - (instancetype)init {
     if (self = [super init]) {
         self.barBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
-        self.leftNormalImage = [UIImage imageNamed:@"back_white"];
-        self.leftHighligtedImage = [UIImage imageNamed:@"back_white"];
         self.leftTitleColor = [UIColor whiteColor];
         self.leftTitleFont = [UIFont systemFontOfSize:18];
         self.hideBackButton = NO;
