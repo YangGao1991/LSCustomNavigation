@@ -66,13 +66,17 @@ UIGestureRecognizerDelegate>
     }
 }
 
+- (UIViewController *)popViewControllerAnimated:(BOOL)animated {
+    if (self.viewControllers.count > 1) {
+        [self.bar popNavigationItemAnimated:YES];
+    }
+    return [super popViewControllerAnimated:animated];
+}
+
 #pragma mark - GYNavigationBarDelegate
 
 - (void)didClickedBackButton {
-    if (self.viewControllers.count > 1) {
-        [self.bar popNavigationItemAnimated:YES];
-        [self popViewControllerAnimated:YES];
-    }
+    [self popViewControllerAnimated:YES];
 }
 
 #pragma mark - UINavigationControllerDelegate
