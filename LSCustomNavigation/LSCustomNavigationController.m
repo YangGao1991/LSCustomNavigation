@@ -1,3 +1,4 @@
+
 //
 //  CustomNavigationController.m
 //  CustomNavigation
@@ -19,6 +20,7 @@ UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) LSNavigationBar *bar;
 @property (nonatomic, strong) LSNavigationDelegateProxy *delegateProxy;
+@property (nonatomic, assign) BOOL popedByGesture;
 
 @end
 
@@ -28,11 +30,13 @@ UIGestureRecognizerDelegate>
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationBar.hidden = YES;
+    self.popedByGesture = NO;
     if (!self.delegate) {
         self.delegate = self;
     }
     UIGestureRecognizer *popGesture = self.interactivePopGestureRecognizer;
     [popGesture addTarget:self action:@selector(handlePopgesture:)];
+    popGesture.delegate = self;
     [self.view addSubview:self.bar];
 }
 
@@ -67,7 +71,8 @@ UIGestureRecognizerDelegate>
 }
 
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated {
-    if (self.viewControllers.count > 1) {
+    if (self.viewControllers.count > 1 && !self.popedByGesture) {
+        // 侧滑手势可能会被取消，因此这里不 pop item，而是交给手势处理
         [self.bar popNavigationItemAnimated:YES];
     }
     return [super popViewControllerAnimated:animated];
@@ -82,7 +87,7 @@ UIGestureRecognizerDelegate>
 #pragma mark - UINavigationControllerDelegate
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-
+    
     id<UIViewControllerTransitionCoordinator> coor = self.transitionCoordinator;
     if (coor != nil) {
 #pragma clang diagnostic push
@@ -100,9 +105,12 @@ UIGestureRecognizerDelegate>
 
 - (void)dealInteractionChanges:(id<UIViewControllerTransitionCoordinatorContext>)context {
     // 侧滑手势结束，由系统接管
-    if ([context isCancelled]) {// 自动取消了返回手势
+    self.popedByGesture = NO;
+    if ([context isCancelled]) {
+        // 自动取消了返回手势
         [self.bar cancelContentAnimation];
-    } else {// 自动完成了返回手势
+    } else {
+        // 自动完成了返回手势
         [self.bar popNavigationItemAnimated:YES];
     }
 }
@@ -119,16 +127,25 @@ UIGestureRecognizerDelegate>
     if ([gesture isKindOfClass:[UIPanGestureRecognizer class]]) {
         UIPanGestureRecognizer *popPangesture = (UIPanGestureRecognizer *)gesture;
         if (gesture.state == UIGestureRecognizerStateChanged) {
-        CGPoint gesturePoint = [popPangesture locationInView:gesture.view];
+            CGPoint gesturePoint = [popPangesture locationInView:gesture.view];
             // FIXME: iPad
-        CGFloat gestureProgress = gesturePoint.x * 1.2 / self.view.bounds.size.width;
-        gestureProgress = gestureProgress <= 1 ? gestureProgress : 1;
-        [self.bar updateContentAnimationProgress:gestureProgress];
-        
+            CGFloat gestureProgress = gesturePoint.x * 1.2 / self.view.bounds.size.width;
+            gestureProgress = gestureProgress <= 1 ? gestureProgress : 1;
+            [self.bar updateContentAnimationProgress:gestureProgress];
+            
         }else if (gesture.state == UIGestureRecognizerStateBegan) {
             [self.bar updateContentBeforeAnimationWithTransitionType:LSNavigationTransitionType_InteractivePop];
         }
     }
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if (gestureRecognizer == self.interactivePopGestureRecognizer) {
+        self.popedByGesture = YES;
+        BOOL gestureEnabled = self.interactivePopGestureRecognizer.enabled;
+        return gestureEnabled;
+    }
+    return gestureRecognizer.enabled;
 }
 
 #pragma mark - Getter
