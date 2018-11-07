@@ -53,9 +53,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIImage * barBackgroundImage;
 @property (nonatomic, assign, getter=isBarHidden) BOOL barHidden;
 
-@property (nonatomic,assign) CGFloat barHeight;
+@property (nonatomic, assign) CGFloat barHeight;
 
 + (instancetype)appearance;
++ (instancetype)appearanceCopy;
 
 + (instancetype)new NS_UNAVAILABLE;
 

@@ -41,4 +41,32 @@ static LSNavigationItem *defaultNavigationItem = nil;
     return defaultNavigationItem;
 }
 
++ (instancetype)appearanceCopy {
+    LSNavigationItem *newItem = [self itemCopiedFromItem:defaultNavigationItem];
+    return newItem;
+}
+
++ (LSNavigationItem *)itemCopiedFromItem:(LSNavigationItem *)item {
+    LSNavigationItem *newItem = [[LSNavigationItem alloc] init];
+    newItem.title = item.title;
+    newItem.titleColor = item.titleColor;
+    newItem.titleFont = item.titleFont;
+    newItem.customTitleView = item.customTitleView;
+    newItem.hideBackButton = item.hideBackButton;
+    newItem.leftNormalImage = item.leftNormalImage;
+    newItem.leftHighligtedImage = item.leftHighligtedImage;
+    newItem.leftTitle = item.leftTitle;
+    newItem.leftTitleColor = item.leftTitleColor;
+    newItem.leftTitleFont = item.leftTitleFont;
+    newItem.leftView = item.leftView;
+    newItem.customRightView = item.customRightView;
+    newItem.barBackgroundColor = item.barBackgroundColor;
+    newItem.barTransparent = item.barTransparent;
+    newItem.barTranslucent = item.barTranslucent;
+    newItem.barBackgroundImage = item.barBackgroundImage;
+    newItem.barHidden = item.barHidden;
+    newItem.barHeight = item.barHeight;
+    return newItem;
+}
+
 @end

@@ -1,4 +1,3 @@
-
 //
 //  CustomNavigationController.m
 //  CustomNavigation
@@ -87,7 +86,7 @@ UIGestureRecognizerDelegate>
 #pragma mark - UINavigationControllerDelegate
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    
+
     id<UIViewControllerTransitionCoordinator> coor = self.transitionCoordinator;
     if (coor != nil) {
 #pragma clang diagnostic push
@@ -127,12 +126,12 @@ UIGestureRecognizerDelegate>
     if ([gesture isKindOfClass:[UIPanGestureRecognizer class]]) {
         UIPanGestureRecognizer *popPangesture = (UIPanGestureRecognizer *)gesture;
         if (gesture.state == UIGestureRecognizerStateChanged) {
-            CGPoint gesturePoint = [popPangesture locationInView:gesture.view];
+        CGPoint gesturePoint = [popPangesture locationInView:gesture.view];
             // FIXME: iPad
-            CGFloat gestureProgress = gesturePoint.x * 1.2 / self.view.bounds.size.width;
-            gestureProgress = gestureProgress <= 1 ? gestureProgress : 1;
-            [self.bar updateContentAnimationProgress:gestureProgress];
-            
+        CGFloat gestureProgress = gesturePoint.x * 1.2 / self.view.bounds.size.width;
+        gestureProgress = gestureProgress <= 1 ? gestureProgress : 1;
+        [self.bar updateContentAnimationProgress:gestureProgress];
+        
         }else if (gesture.state == UIGestureRecognizerStateBegan) {
             [self.bar updateContentBeforeAnimationWithTransitionType:LSNavigationTransitionType_InteractivePop];
         }

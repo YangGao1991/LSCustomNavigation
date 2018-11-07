@@ -19,7 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LSCustomNavigationController : UINavigationController
 
-
 @end
 
 NS_ASSUME_NONNULL_END

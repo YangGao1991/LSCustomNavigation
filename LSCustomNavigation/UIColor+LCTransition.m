@@ -11,11 +11,11 @@
 @implementation UIColor(LCTransition)
 
 - (NSArray *)ls_componentsArray {
-    const CGFloat *components = CGColorGetComponents(self.CGColor);
-    CGFloat r = components[0];
-    CGFloat g = components[1];
-    CGFloat b = components[2];
-    CGFloat a = components[3];
+    CGFloat r = 0;
+    CGFloat g = 0;
+    CGFloat b = 0;
+    CGFloat a = 1;
+    [self getRed:&r green:&g blue:&b alpha:&a];
     return @[@(r), @(g), @(b), @(a)];
 }
 
@@ -32,7 +32,7 @@
     CGFloat g = [originComponents[1] doubleValue] + [distanceComponent[1] doubleValue] * progress;
     CGFloat b = [originComponents[2] doubleValue] + [distanceComponent[2] doubleValue] * progress;
     CGFloat a = [originComponents[3] doubleValue] + [distanceComponent[3] doubleValue] * progress;
-//    NSLog(@"r=%f, g=%f, b=%f, a=%f",r,g,b,a);
+    NSLog(@"================r=%f, g=%f, b=%f, a=%f",r,g,b,a);
     return [UIColor colorWithRed:r green:g blue:b alpha:a];
 }
 
