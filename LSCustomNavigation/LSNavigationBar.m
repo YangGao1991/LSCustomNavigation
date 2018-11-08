@@ -280,6 +280,9 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     }
     currentGroup.active = NO;
     anotherGroup.active = YES;
+    if ([currentGroup elementForKey:rightCustomElementKey]) {
+        [[currentGroup elementForKey:rightCustomElementKey] removeFromSuperview];
+    }
 }
 
 #pragma mark - Bar Appearance
