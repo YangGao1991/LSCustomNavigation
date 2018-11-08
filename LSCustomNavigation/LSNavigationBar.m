@@ -312,16 +312,19 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
         }
             break;
     }
-    if (toItem.barBackgroundColor) {
-        UIColor *currentColor = [UIColor ls_transitionColorFromColor:self.lastBackgroundColor
-                                                          toColor:toItem.barBackgroundColor
-                                                         progress:progress];
-        CGFloat toAlpha = toItem.barTransparent ? 0 : (toItem.barTranslucent ? 0.7 : 1);
-        CGFloat currentAlpha = (toAlpha - _lastBackgroundColorAlphaComponent) * progress + _lastBackgroundColorAlphaComponent;
-        self.backgroundColor = [currentColor colorWithAlphaComponent:currentAlpha];
-    }
+    
+    // 尽量保持和谐过度
+    UIColor *toColor = (toItem.barTransparent || toItem.isBarHidden) ? self.lastBackgroundColor : toItem.barBackgroundColor;
+    UIColor *currentColor = [UIColor ls_transitionColorFromColor:self.lastBackgroundColor
+                                                      toColor:toColor
+                                                     progress:progress];
+    CGFloat toBackgroundAlpha = (toItem.barTransparent || toItem.isBarHidden) ? 0 : (toItem.barTranslucent ? 0.7 : 1);
+    CGFloat currentAlpha = (toBackgroundAlpha - _lastBackgroundColorAlphaComponent) * progress + _lastBackgroundColorAlphaComponent;
+    self.backgroundColor = [currentColor colorWithAlphaComponent:currentAlpha];
+    
     CGFloat toAlpha = toItem.isBarHidden ? 0 : 1;
     self.alpha = (toAlpha - _lastAlpha) * progress + _lastAlpha;
+    NSLog(@"======%f",self.alpha);
     if (toItem.barHeight > 0) {
         CGFloat currentHeight = (toItem.barHeight - _lastBarHeight) * progress + _lastBarHeight;
         CGRect currentFrame = self.frame;
