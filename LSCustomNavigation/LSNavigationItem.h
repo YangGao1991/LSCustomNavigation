@@ -55,6 +55,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) CGFloat barHeight;
 
+// 重定义返回按钮动作
+typedef void(^LSButtonAction)(id sender);
+@property (nonatomic, copy) LSButtonAction customLeftButtonAction;
+
 + (instancetype)appearance;
 + (instancetype)appearanceCopy;
 

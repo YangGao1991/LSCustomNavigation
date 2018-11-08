@@ -196,6 +196,16 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
         [anotherButton setTitle:backTitle forState:UIControlStateHighlighted];
         [anotherButton setTitleColor:anotherItem.leftTitleColor forState:UIControlStateNormal];
         anotherButton.titleLabel.font = anotherItem.leftTitleFont;
+        
+        if (anotherItem.customLeftButtonAction) {
+            [anotherButton addTarget:self
+                              action:@selector(doCustomLeftButtonAction:)
+                    forControlEvents:UIControlEventTouchUpInside];
+        }else {
+            [anotherButton addTarget:self
+                              action:@selector(backButtonClicked)
+                    forControlEvents:UIControlEventTouchUpInside];
+        }
     }
     
     if (anotherItem && anotherItem.customRightView) {
@@ -313,7 +323,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
             break;
     }
     
-    // 尽量保持和谐过度
+    // 尽量保持和谐过渡
     UIColor *toColor = (toItem.barTransparent || toItem.isBarHidden) ? self.lastBackgroundColor : toItem.barBackgroundColor;
     UIColor *currentColor = [UIColor ls_transitionColorFromColor:self.lastBackgroundColor
                                                       toColor:toColor
@@ -324,7 +334,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     
     CGFloat toAlpha = toItem.isBarHidden ? 0 : 1;
     self.alpha = (toAlpha - _lastAlpha) * progress + _lastAlpha;
-    NSLog(@"======%f",self.alpha);
+
     if (toItem.barHeight > 0) {
         CGFloat currentHeight = (toItem.barHeight - _lastBarHeight) * progress + _lastBarHeight;
         CGRect currentFrame = self.frame;
@@ -618,6 +628,13 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
 - (void)backButtonClicked {
     if (self.delegate && [self.delegate respondsToSelector:@selector(didClickedBackButton)]) {
         [self.delegate didClickedBackButton];
+    }
+}
+
+- (void)doCustomLeftButtonAction:(id)sender {
+    LSNavigationItem *currentItem = [self topItem];
+    if (currentItem && currentItem.customLeftButtonAction) {
+        currentItem.customLeftButtonAction(sender);
     }
 }
 
