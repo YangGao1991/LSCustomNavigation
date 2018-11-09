@@ -59,6 +59,10 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void(^LSButtonAction)(id sender);
 @property (nonatomic, copy) LSButtonAction customLeftButtonAction;
 
+/*
+ * @brief 设置全局通用导航栏外观
+ *
+ */
 + (instancetype)appearance;
 + (instancetype)appearanceCopy;
 

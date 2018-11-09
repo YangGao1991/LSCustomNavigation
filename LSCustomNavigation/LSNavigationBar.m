@@ -106,6 +106,26 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     return [self.innerItems lastObject];
 }
 
+- (LSNavigationItem *)itemTransitionToWithTransitionType:(LSNavigationTransitionType)transitionType {
+    LSNavigationItem *anotherItem = nil;
+    switch (transitionType) {
+        case LSNavigationTransitionType_InteractivePop:
+        {
+            if (self.innerItems.count >= 2) {
+                anotherItem = [self.innerItems objectAtIndex:self.innerItems.count - 2];
+            }
+        }
+            break;
+        case LSNavigationTransitionType_Push:
+        case LSNavigationTransitionType_Pop:
+        {
+            anotherItem = self.topItem;
+        }
+            break;
+    }
+    return anotherItem;
+}
+
 - (void)pushNavigationItem:(LSNavigationItem *)item animated:(BOOL)animated {
     if (!item) {
         return;
@@ -170,33 +190,18 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
         currentGroup = self.sideGroup2;
         anotherGroup = self.sideGroup1;
     }
-    LSNavigationItem *anotherItem = nil;
-    switch (transitionType) {
-        case LSNavigationTransitionType_InteractivePop:
-        {
-            if (self.innerItems.count >= 2) {
-                anotherItem = [self.innerItems objectAtIndex:self.innerItems.count - 2];
-            }
-        }
-            break;
-        case LSNavigationTransitionType_Push:
-        case LSNavigationTransitionType_Pop:
-        {
-            anotherItem = self.topItem;
-        }
-            break;
-    }
-
-    if (anotherItem && (!anotherItem.isBackButtonHidden)) {
+    LSNavigationItem *anotherItem = [self itemTransitionToWithTransitionType:transitionType];
+    UIButton *anotherButton = [anotherGroup elementForKey:backButtonElementKey];
+    
+    if (anotherItem && (!anotherItem.isBackButtonHidden) && (!anotherItem.isBarHidden)) {
         NSString *backTitle = (anotherItem.leftTitle && anotherItem.leftTitle.length > 0) ? anotherItem.leftTitle : @"";
-        UIButton *anotherButton = [anotherGroup elementForKey:backButtonElementKey];
         [anotherButton setImage:anotherItem.leftNormalImage forState:UIControlStateNormal];
         [anotherButton setImage:anotherItem.leftHighligtedImage forState:UIControlStateHighlighted];
         [anotherButton setTitle:backTitle forState:UIControlStateNormal];
         [anotherButton setTitle:backTitle forState:UIControlStateHighlighted];
         [anotherButton setTitleColor:anotherItem.leftTitleColor forState:UIControlStateNormal];
         anotherButton.titleLabel.font = anotherItem.leftTitleFont;
-        
+        anotherButton.hidden = NO;
         if (anotherItem.customLeftButtonAction) {
             [anotherButton addTarget:self
                               action:@selector(doCustomLeftButtonAction:)
@@ -206,6 +211,8 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
                               action:@selector(backButtonClicked)
                     forControlEvents:UIControlEventTouchUpInside];
         }
+    }else {
+        anotherButton.hidden = YES;
     }
     
     if (anotherItem && anotherItem.customRightView) {
@@ -308,23 +315,8 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     }
 }
 
-- (void)updateAppearanceAnimationProgress:(CGFloat)progress transitionType:(LSNavigationTransitionType)transitiontype {
-    LSNavigationItem *toItem = nil;
-    switch (transitiontype) {
-        case LSNavigationTransitionType_InteractivePop:
-        {
-            if (self.innerItems.count >= 2) {
-                toItem = [self.innerItems objectAtIndex:self.innerItems.count - 2];
-            }
-        }
-            break;
-        case LSNavigationTransitionType_Push:
-        case LSNavigationTransitionType_Pop:
-        {
-            toItem = self.topItem;
-        }
-            break;
-    }
+- (void)updateAppearanceAnimationProgress:(CGFloat)progress transitionType:(LSNavigationTransitionType)transitionType {
+    LSNavigationItem *toItem = [self itemTransitionToWithTransitionType:transitionType];
     
     // 尽量保持和谐过渡
     UIColor *toColor = (toItem.barTransparent || toItem.isBarHidden) ? self.lastBackgroundColor : toItem.barBackgroundColor;
@@ -370,22 +362,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
         currentGroup = self.backgroundImageGroup2;
         anotherGroup = self.backgroundImageGroup1;
     }
-    LSNavigationItem *anotherItem = nil;
-    switch (transitionType) {
-        case LSNavigationTransitionType_InteractivePop:
-        {
-            if (self.innerItems.count >= 2) {
-                anotherItem = [self.innerItems objectAtIndex:self.innerItems.count - 2];
-            }
-        }
-            break;
-        case LSNavigationTransitionType_Push:
-        case LSNavigationTransitionType_Pop:
-        {
-            anotherItem = self.topItem;
-        }
-            break;
-    }
+    LSNavigationItem *anotherItem = [self itemTransitionToWithTransitionType:transitionType];
     if (anotherItem && anotherItem.barBackgroundImage) {
         UIImageView *anotherBackgroundImageView = [anotherGroup elementForKey:backgroundImageElementKey];
         anotherBackgroundImageView.image = anotherItem.barBackgroundImage;
@@ -460,26 +437,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     }
     UILabel *anotherTitleLabel = [anotherGroup elementForKey:titleLabelElementKey];
     
-    LSNavigationItem *anotherItem = nil;
-    switch (transitionType) {
-        case LSNavigationTransitionType_InteractivePop:
-        {
-            if (self.innerItems.count >= 2) {
-                anotherItem = [self.innerItems objectAtIndex:self.innerItems.count - 2];
-            }
-        }
-            break;
-        case LSNavigationTransitionType_Push:
-        {
-            anotherItem = self.topItem;
-        }
-            break;
-        case LSNavigationTransitionType_Pop:
-        {
-            anotherItem = self.topItem;
-        }
-            break;
-    }
+    LSNavigationItem *anotherItem = [self itemTransitionToWithTransitionType:transitionType];
     UIView *customTitleView = anotherItem.customTitleView;
     if (customTitleView) {
         [self addSubview:customTitleView];
@@ -497,7 +455,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
         [anotherGroup addElement:anotherItem.customTitleView forKey:titleCustomElementKey];
         anotherTitleLabel.hidden = YES;
     }else {
-        anotherTitleLabel.hidden = NO;
+        anotherTitleLabel.hidden = anotherItem.isBarHidden;
     }
     
     switch (transitionType) {
