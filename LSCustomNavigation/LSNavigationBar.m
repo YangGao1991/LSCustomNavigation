@@ -202,7 +202,8 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
         [anotherButton setTitle:backTitle forState:UIControlStateHighlighted];
         [anotherButton setTitleColor:anotherItem.leftTitleColor forState:UIControlStateNormal];
         anotherButton.titleLabel.font = anotherItem.leftTitleFont;
-        anotherButton.ls_verticalConstraint.constant = kLSStatusBarHeight / 2 + anotherItem.leftViewShifting.y;
+        CGFloat verticalConstant = (anotherItem.isStatusBarHidden ? 0 : kLSStatusBarHeight / 2) + anotherItem.leftViewShifting.y;
+        anotherButton.ls_verticalConstraint.constant = verticalConstant;
         anotherButton.ls_horizonConstraint.constant = LSNavigationSideMargin + anotherItem.leftViewShifting.x;
         anotherButton.hidden = NO;
         if (anotherItem.customLeftButtonAction) {
@@ -222,8 +223,9 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
         UIView *customRightView = anotherItem.customRightView;
         [self addSubview:customRightView];
         customRightView.translatesAutoresizingMaskIntoConstraints = NO;
+        CGFloat verticalConstant = (anotherItem.isStatusBarHidden ? 0 : kLSStatusBarHeight / 2) + anotherItem.rightViewShifting.y;
         customRightView.ls_verticalConstraint = [self verticalConstraintForSubview:customRightView
-                                                                          constant:kLSStatusBarHeight / 2 + anotherItem.rightViewShifting.y];
+                                                                          constant:verticalConstant];
         customRightView.ls_verticalConstraint.active = YES;
         customRightView.ls_horizonConstraint = [NSLayoutConstraint constraintWithItem:customRightView
                                                                          attribute:NSLayoutAttributeRight
@@ -446,8 +448,10 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     if (customTitleView) {
         [self addSubview:customTitleView];
         customTitleView.translatesAutoresizingMaskIntoConstraints = NO;
+        CGFloat verticalConstant = (anotherItem.isStatusBarHidden ? 0 : kLSStatusBarHeight / 2) + anotherItem.titleViewShifting.y;
+
         customTitleView.ls_verticalConstraint = [self verticalConstraintForSubview:customTitleView
-                                                                          constant:kLSStatusBarHeight / 2 + anotherItem.titleViewShifting.y];
+                                                                          constant:verticalConstant];
         customTitleView.ls_verticalConstraint.active = YES;
         customTitleView.ls_horizonConstraint = [NSLayoutConstraint constraintWithItem:customTitleView
                                                                          attribute:NSLayoutAttributeCenterX
@@ -461,6 +465,8 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
         anotherTitleLabel.hidden = YES;
     }else {
         anotherTitleLabel.hidden = anotherItem.isBarHidden;
+        CGFloat verticalConstant = (anotherItem.isStatusBarHidden ? 0 : kLSStatusBarHeight / 2) + anotherItem.titleViewShifting.y;
+        anotherTitleLabel.ls_verticalConstraint.constant = verticalConstant;
     }
     
     switch (transitionType) {

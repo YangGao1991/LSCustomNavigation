@@ -50,6 +50,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIImage * barBackgroundImage;
 @property (nonatomic, assign, getter=isBarHidden) BOOL barHidden;
 
+// default to NO.
+@property (nonatomic, assign) BOOL isStatusBarHidden;
+
 @property (nonatomic, assign) CGFloat barHeight;
 @property (nonatomic, assign) CGPoint leftViewShifting;
 @property (nonatomic, assign) CGPoint rightViewShifting;

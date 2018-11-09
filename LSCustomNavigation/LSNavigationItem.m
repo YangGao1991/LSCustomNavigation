@@ -29,6 +29,7 @@ static LSNavigationItem *defaultNavigationItem = nil;
         self.titleFont = [UIFont systemFontOfSize:18];
         self.barHeight = kLSNavigationBarHeight;
         self.barHidden = NO;
+        self.isStatusBarHidden = NO;
     }
     return self;
 }
@@ -66,6 +67,7 @@ static LSNavigationItem *defaultNavigationItem = nil;
     newItem.barBackgroundImage = item.barBackgroundImage;
     newItem.barHidden = item.barHidden;
     newItem.barHeight = item.barHeight;
+    newItem.isStatusBarHidden = item.isStatusBarHidden;
     return newItem;
 }
 
