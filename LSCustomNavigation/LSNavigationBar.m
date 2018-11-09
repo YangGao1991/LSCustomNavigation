@@ -25,7 +25,8 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
 
 
 #define IS_IPAD ([[UIDevice currentDevice].model isEqualToString:@"iPad"])
-#define GYNavigationTitleAnimationLength (IS_IPAD ? 500 : 200)
+#define LSNavigationTitleAnimationLength (IS_IPAD ? 500 : 200)
+#define LSNavigationSideMargin 16
 
 @interface LSNavigationBar ()
 
@@ -201,6 +202,8 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
         [anotherButton setTitle:backTitle forState:UIControlStateHighlighted];
         [anotherButton setTitleColor:anotherItem.leftTitleColor forState:UIControlStateNormal];
         anotherButton.titleLabel.font = anotherItem.leftTitleFont;
+        anotherButton.ls_verticalConstraint.constant = kLSStatusBarHeight / 2 + anotherItem.leftViewShifting.y;
+        anotherButton.ls_horizonConstraint.constant = LSNavigationSideMargin + anotherItem.leftViewShifting.x;
         anotherButton.hidden = NO;
         if (anotherItem.customLeftButtonAction) {
             [anotherButton addTarget:self
@@ -219,7 +222,8 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
         UIView *customRightView = anotherItem.customRightView;
         [self addSubview:customRightView];
         customRightView.translatesAutoresizingMaskIntoConstraints = NO;
-        customRightView.ls_verticalConstraint = [self verticalConstraintForSubview:customRightView];
+        customRightView.ls_verticalConstraint = [self verticalConstraintForSubview:customRightView
+                                                                          constant:kLSStatusBarHeight / 2 + anotherItem.rightViewShifting.y];
         customRightView.ls_verticalConstraint.active = YES;
         customRightView.ls_horizonConstraint = [NSLayoutConstraint constraintWithItem:customRightView
                                                                          attribute:NSLayoutAttributeRight
@@ -227,7 +231,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
                                                                             toItem:self
                                                                          attribute:NSLayoutAttributeRight
                                                                         multiplier:1
-                                                                          constant:-16];
+                                                                          constant:-LSNavigationSideMargin + anotherItem.rightViewShifting.x];
         customRightView.ls_horizonConstraint.active = YES;
         [anotherGroup addElement:customRightView forKey:rightCustomElementKey];
     }
@@ -442,7 +446,8 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     if (customTitleView) {
         [self addSubview:customTitleView];
         customTitleView.translatesAutoresizingMaskIntoConstraints = NO;
-        customTitleView.ls_verticalConstraint = [self verticalConstraintForSubview:customTitleView];
+        customTitleView.ls_verticalConstraint = [self verticalConstraintForSubview:customTitleView
+                                                                          constant:kLSStatusBarHeight / 2 + anotherItem.titleViewShifting.y];
         customTitleView.ls_verticalConstraint.active = YES;
         customTitleView.ls_horizonConstraint = [NSLayoutConstraint constraintWithItem:customTitleView
                                                                          attribute:NSLayoutAttributeCenterX
@@ -450,7 +455,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
                                                                             toItem:self
                                                                          attribute:NSLayoutAttributeCenterX
                                                                         multiplier:1
-                                                                          constant:0];
+                                                                          constant:anotherItem.titleViewShifting.x];
         customTitleView.ls_horizonConstraint.active = YES;
         [anotherGroup addElement:anotherItem.customTitleView forKey:titleCustomElementKey];
         anotherTitleLabel.hidden = YES;
@@ -467,8 +472,8 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
             break;
         case LSNavigationTransitionType_Push:
         {
-            anotherTitleLabel.ls_horizonConstraint.constant = GYNavigationTitleAnimationLength;
-            customTitleView.ls_horizonConstraint.constant = GYNavigationTitleAnimationLength;
+            anotherTitleLabel.ls_horizonConstraint.constant = LSNavigationTitleAnimationLength;
+            customTitleView.ls_horizonConstraint.constant = LSNavigationTitleAnimationLength;
         }
             break;
         case LSNavigationTransitionType_Pop:
@@ -510,8 +515,8 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
 //            if (self.topItem.titleView) {
 //                [self addSubview:self.topItem.titleView];
 //            }else {
-                anotherCustomView.ls_horizonConstraint.constant = GYNavigationTitleAnimationLength * (1 - progress);
-                anotherTitleLabel.ls_horizonConstraint.constant = GYNavigationTitleAnimationLength * (1 - progress);
+                anotherCustomView.ls_horizonConstraint.constant = LSNavigationTitleAnimationLength * (1 - progress);
+                anotherTitleLabel.ls_horizonConstraint.constant = LSNavigationTitleAnimationLength * (1 - progress);
                 [anotherGroup setAlpha:progress];
 //            }
         }
@@ -520,14 +525,9 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
         case LSNavigationTransitionType_InteractivePop:
         {
             [currentGroup setAlpha:1 - progress];
-            currentTitleLabel.ls_horizonConstraint.constant = GYNavigationTitleAnimationLength * progress;
-            currentCustomView.ls_horizonConstraint.constant = GYNavigationTitleAnimationLength * progress;
-//            if (self.topItem.titleView) {
-//                [self addSubview:self.topItem.titleView];
-//            }else {
-            
-                [anotherGroup setAlpha:progress];
-//            }
+            currentTitleLabel.ls_horizonConstraint.constant = LSNavigationTitleAnimationLength * progress;
+            currentCustomView.ls_horizonConstraint.constant = LSNavigationTitleAnimationLength * progress;
+            [anotherGroup setAlpha:progress];
         }
             break;
     }
@@ -610,7 +610,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
                                                                          toItem:self
                                                                       attribute:NSLayoutAttributeLeft
                                                                      multiplier:1
-                                                                       constant:16];
+                                                                       constant:LSNavigationSideMargin];
     }
     return _backButton1;
 }
@@ -624,7 +624,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
                                                                          toItem:self
                                                                       attribute:NSLayoutAttributeLeft
                                                                      multiplier:1
-                                                                       constant:16];
+                                                                       constant:LSNavigationSideMargin];
     }
     return _backButton2;
 }
@@ -632,7 +632,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
 - (UIButton *)backButton {
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     backButton.translatesAutoresizingMaskIntoConstraints = NO;
-    backButton.ls_verticalConstraint = [self verticalConstraintForSubview:backButton];
+    backButton.ls_verticalConstraint = [self verticalConstraintForSubview:backButton constant:kLSStatusBarHeight / 2];
     [backButton addTarget:self action:@selector(backButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     return backButton;
 }
@@ -668,7 +668,7 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
 - (UILabel *)titleLabel {
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    titleLabel.ls_verticalConstraint = [self verticalConstraintForSubview:titleLabel];
+    titleLabel.ls_verticalConstraint = [self verticalConstraintForSubview:titleLabel constant:kLSStatusBarHeight / 2];
     return titleLabel;
 }
 
@@ -706,14 +706,14 @@ static NSString *backgroundImageElementKey = @"backgroundImageElementKey";
     return backgroundImageView;
 }
 
-- (NSLayoutConstraint *)verticalConstraintForSubview:(UIView *)subview {
+- (NSLayoutConstraint *)verticalConstraintForSubview:(UIView *)subview constant:(CGFloat)constant{
     return [NSLayoutConstraint constraintWithItem:subview
                                         attribute:NSLayoutAttributeCenterY
                                         relatedBy:NSLayoutRelationEqual
                                            toItem:self
                                         attribute:NSLayoutAttributeCenterY
                                        multiplier:1
-                                         constant:kLSStatusBarHeight / 2];
+                                         constant:constant];
 }
 
 @end

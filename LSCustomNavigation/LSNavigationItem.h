@@ -37,10 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIColor  * leftTitleColor;
 @property (nonatomic, strong) UIFont *leftTitleFont;
 
-
-// customizing Views,不做任何处理和约束，也不会调用自定义的返回，可以由外面直接传入
-@property (nonatomic, strong) UIView * leftView;
-
+@property (nonatomic, strong) UIView *customLeftView;
 @property (nonatomic, strong) UIView *customRightView;
 
 // bar appearance
@@ -54,6 +51,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, getter=isBarHidden) BOOL barHidden;
 
 @property (nonatomic, assign) CGFloat barHeight;
+@property (nonatomic, assign) CGPoint leftViewShifting;
+@property (nonatomic, assign) CGPoint rightViewShifting;
+@property (nonatomic, assign) CGPoint titleViewShifting;
 
 // 重定义返回按钮动作
 typedef void(^LSButtonAction)(id sender);
